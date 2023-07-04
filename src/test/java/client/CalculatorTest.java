@@ -1,9 +1,9 @@
 package client;
 
 import factory.CalculatorFactory;
-import function.CalculatorFunction;
-import function.CalculatorMinusFunction;
-import function.CalculatorPlusFunction;
+import strategy.CalculatorStrategy;
+import strategy.CalculatorMinusStrategy;
+import strategy.CalculatorPlusStrategy;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -27,7 +27,7 @@ class CalculatorTest {
     @DisplayName("CalculatorPlusFunction 테스트")
     @Test
     public void calculator_plus_function_test() {
-        function.CalculatorFunction plusFunction = new CalculatorPlusFunction();
+        CalculatorStrategy plusFunction = new CalculatorPlusStrategy();
         Number result = plusFunction.process(1, 2);
 
         Assertions.assertEquals(3, result);
@@ -36,7 +36,7 @@ class CalculatorTest {
     @DisplayName("CalculatorMinusFunction 테스트")
     @Test
     public void calculator_minus_function_test() {
-        function.CalculatorFunction minusFunction = new CalculatorMinusFunction();
+        CalculatorStrategy minusFunction = new CalculatorMinusStrategy();
         Number result = minusFunction.process(1, 2);
 
         Assertions.assertEquals(-1, result);
@@ -47,12 +47,12 @@ class CalculatorTest {
     public void calculator_factory_test() throws Exception {
         factory.CalculatorFactory factory = CalculatorFactory.getInstance();
 
-        function.CalculatorFunction calculatorFunction1 = factory.createCalculatorFunction('+');
-        Number result1 = calculatorFunction1.process(1, 2);
+        CalculatorStrategy calculatorStrategy1 = factory.createCalculatorFunction('+');
+        Number result1 = calculatorStrategy1.process(1, 2);
         Assertions.assertEquals(3, result1);
 
-        CalculatorFunction calculatorFunction2 = factory.createCalculatorFunction('-');
-        Number result2 = calculatorFunction2.process(1, 2);
+        CalculatorStrategy calculatorStrategy2 = factory.createCalculatorFunction('-');
+        Number result2 = calculatorStrategy2.process(1, 2);
         Assertions.assertEquals(-1, result2);
     }
 

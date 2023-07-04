@@ -1,8 +1,8 @@
 package client;
 
-import function.CalculatorFunction;
+import strategy.CalculatorStrategy;
 
-public class CalculatorPlusFunction implements CalculatorFunction {
+public class CalculatorPlusStrategy implements CalculatorStrategy {
     @Override
     public Number process(Number a, Number b) {
         return a.intValue() + b.intValue();

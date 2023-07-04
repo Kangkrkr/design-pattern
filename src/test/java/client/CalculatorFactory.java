@@ -1,10 +1,10 @@
 package client;
 
-import function.CalculatorFunction;
-import function.CalculatorMinusFunction;
-import function.CalculatorPlusFunction;
+import strategy.CalculatorStrategy;
+import strategy.CalculatorMinusStrategy;
+import strategy.CalculatorPlusStrategy;
 
-public class CalculatorFactory<T extends function.CalculatorFunction> {
+public class CalculatorFactory<T extends CalculatorStrategy> {
 
     private static CalculatorFactory calculatorFactory;
 
@@ -22,15 +22,15 @@ public class CalculatorFactory<T extends function.CalculatorFunction> {
         return calculatorFactory;
     }
 
-    public <T extends function.CalculatorFunction> function.CalculatorFunction createCalculatorFunction(char operator) throws Exception {
-        CalculatorFunction function = null;
+    public <T extends CalculatorStrategy> CalculatorStrategy createCalculatorFunction(char operator) throws Exception {
+        CalculatorStrategy function = null;
 
         switch (operator) {
             case '+' :
-                function = new CalculatorPlusFunction();
+                function = new CalculatorPlusStrategy();
                 break;
             case '-' :
-                function = new CalculatorMinusFunction();
+                function = new CalculatorMinusStrategy();
                 break;
             default:
                 throw new Exception("Unsupported operation");

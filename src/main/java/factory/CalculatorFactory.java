@@ -1,9 +1,9 @@
 package factory;
 
 import client.Calculator;
-import function.*;
+import strategy.*;
 
-public class CalculatorFactory<T extends CalculatorFunction> {
+public class CalculatorFactory<T extends CalculatorStrategy> {
 
     private static CalculatorFactory calculatorFactory;
 
@@ -21,21 +21,21 @@ public class CalculatorFactory<T extends CalculatorFunction> {
         return calculatorFactory;
     }
 
-    public <T extends CalculatorFunction> CalculatorFunction createCalculatorFunction(char operator) throws Exception {
-        CalculatorFunction function = null;
+    public <T extends CalculatorStrategy> CalculatorStrategy createCalculatorFunction(char operator) throws Exception {
+        CalculatorStrategy function = null;
 
         switch (operator) {
             case '+' :
-                function = new CalculatorPlusFunction();
+                function = new CalculatorPlusStrategy();
                 break;
             case '-' :
-                function = new CalculatorMinusFunction();
+                function = new CalculatorMinusStrategy();
                 break;
             case '*' :
-                function = new CalculatorMultiplyFunction();
+                function = new CalculatorMultiplyStrategy();
                 break;
             case '/' :
-                function = new CalculatorDevideFunction();
+                function = new CalculatorDevideStrategy();
                 break;
             default:
                 throw new Exception("Unsupported operation");

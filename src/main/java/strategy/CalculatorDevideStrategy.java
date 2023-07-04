@@ -1,6 +1,6 @@
-package function;
+package strategy;
 
-public class CalculatorDevideFunction implements CalculatorFunction {
+public class CalculatorDevideStrategy implements CalculatorStrategy {
     @Override
     public Number process(Number a, Number b) {
         return a.intValue() / b.intValue();

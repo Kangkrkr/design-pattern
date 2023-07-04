@@ -1,6 +1,6 @@
-package function;
+package strategy;
 
 @FunctionalInterface
-public interface CalculatorFunction {
+public interface CalculatorStrategy {
     public Number process(Number a, Number b);
 }

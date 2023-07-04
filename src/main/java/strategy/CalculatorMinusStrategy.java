@@ -1,6 +1,6 @@
-package function;
+package strategy;
 
-public class CalculatorMinusFunction implements CalculatorFunction {
+public class CalculatorMinusStrategy implements CalculatorStrategy {
     @Override
     public Number process(Number a, Number b) {
         return a.intValue() - b.intValue();

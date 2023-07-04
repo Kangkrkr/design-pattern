@@ -1,14 +1,14 @@
 package client;
 
 import factory.CalculatorFactory;
-import function.CalculatorFunction;
+import strategy.CalculatorStrategy;
 
 import java.util.Stack;
 
 public class Calculator {
 
     private static Calculator calculator;
-    private CalculatorFactory<CalculatorFunction> calculatorFactory = CalculatorFactory.getInstance();
+    private CalculatorFactory<CalculatorStrategy> calculatorFactory = CalculatorFactory.getInstance();
 
     private Calculator() {}
 
@@ -125,10 +125,10 @@ public class Calculator {
 
                 // 일단, 이항연산자인 것을 전제조건으로 해본다. (스택에서 피연산자 두개 팝)
                 int post = Integer.parseInt(stack.pop()+"");
-                int pre = Integer.parseInt(stack.pop()+"");
+                int pre  = Integer.parseInt(stack.pop()+"");
 
-                CalculatorFunction calculatorFunction = calculatorFactory.createCalculatorFunction(c);
-                Number result = calculatorFunction.process(pre, post);
+                CalculatorStrategy calculatorStrategy = calculatorFactory.createCalculatorFunction(c);
+                Number result = calculatorStrategy.process(pre, post);
 
                 // 4. 계산한 결과를 스택에 푸쉬한다.
                 stack.push(result);
